@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidDevelopment</string>
+    <string name="email_hint_for_text_input">Email</string>
 </resources>
