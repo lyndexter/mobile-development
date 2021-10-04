@@ -3,6 +3,10 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="secondBackgroundColor">#A07AF0</color>
-    <color name="firstBackgroundColor">#7280E8</color>
+    <color name="secondBackgroundColor">#2C3C56</color>
+    <color name="firstBackgroundColor">#3C5068</color>
+    <color name="grey_c7c7c7">#c7c7c7</color>
+    <color name="black_overlay">#100D0D</color>
+    <color name="buttonFirstColor">#3CBFAD</color>
+    <color name="buttonSecondColor">#01B6D1</color>
 </resources>

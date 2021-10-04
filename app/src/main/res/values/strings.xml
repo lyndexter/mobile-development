@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">AndroidDevelopment</string>
     <string name="email_hint_for_text_input">Email</string>
+    <string name="password_hint_for_text_input">Password</string>
+    <string name="sign_in_button_text">Log in</string>
+    <string name="text_redirection_to_register_page">Not Register?</string>
+    <string name="description_for_statistic_icon">statistic icon</string>
+    <string name="title_of_back_button">Back arrow</string>
+    <string name="confirm_password_hint_for_text_input">Confirm Password</string>
+    <string name="name_hint_for_text_input">Name</string>
 </resources>

@@ -1,11 +1,26 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="boxStrokeColor">@color/grey_c7c7c7</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColorHint">@color/black_overlay</item>
+    </style>
+    
+    <style name="AppButton" parent="Theme.MaterialComponents.Light">
+        <item name="android:background">@drawable/button_style</item>
+    </style>
+
+    <style name="AppInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="boxStrokeColor">@color/grey_c7c7c7</item>
+        <item name="android:textColorHint">@color/grey_c7c7c7</item>
+        <item name="android:textColor">@color/grey_c7c7c7</item>
+
+
     </style>
 
 </resources>
