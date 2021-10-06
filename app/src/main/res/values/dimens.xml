@@ -2,5 +2,15 @@
 <resources>
     <dimen name="button_corner_radius">10dp</dimen>
     <dimen name="svg_size">294dp</dimen>
-    <dimen name="margin_of_input_layout">16dp</dimen>
+    <dimen name="horizontal_margin_of_input_layout">16dp</dimen>
+    <dimen name="input_font_size">20sp</dimen>
+    <dimen name="button_font_size">20sp</dimen>
+    <dimen name="horizontal_margin_of_button_in_authentication_pages">30dp</dimen>
+    <dimen name="distance_between_button_and_text_view_in_auth_page">16dp</dimen>
+    <dimen name="margin_at_top_of_button_in_auth_page">16dp</dimen>
+    <dimen name="min_distance_to_the_bottom_of_page">16dp</dimen>
+    <dimen name="icon_size_in_sign_up_page">150dp</dimen>
+    <dimen name="icon_top_margin_in_sign_up_page">30dp</dimen>
+    <dimen name="icon_bottom_margin_in_sign_up_page">10dp</dimen>
+    <dimen name="title_page_font_size">24sp</dimen>
 </resources>

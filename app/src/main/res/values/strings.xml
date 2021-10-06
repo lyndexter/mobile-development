@@ -8,4 +8,8 @@
     <string name="title_of_back_button">Back arrow</string>
     <string name="confirm_password_hint_for_text_input">Confirm Password</string>
     <string name="name_hint_for_text_input">Name</string>
+    <string name="text_redirection_to_sign_in_page">Already have account?</string>
+    <string name="sign_up_button_text">Sign up</string>
+    <string name="Sign_in_page_title">Sign in</string>
+    <string name="title_of_sign_up_page">Sign up</string>
 </resources>
