@@ -13,4 +13,5 @@
     <dimen name="icon_top_margin_in_sign_up_page">30dp</dimen>
     <dimen name="icon_bottom_margin_in_sign_up_page">10dp</dimen>
     <dimen name="title_page_font_size">24sp</dimen>
+    <dimen name="horizontal_margin__text_view_in_main_page">80dp</dimen>
 </resources>

@@ -12,4 +12,8 @@
     <string name="sign_up_button_text">Sign up</string>
     <string name="Sign_in_page_title">Sign in</string>
     <string name="title_of_sign_up_page">Sign up</string>
+    <string name="title_of_welcome_page">Welcome</string>
+    <string name="title_main_page">Main</string>
+    <string name="main_page_text">Hello its app analizum, to enter in app? please authorise first</string>
+    <string name="welcome_page_text">Hello from app</string>
 </resources>
