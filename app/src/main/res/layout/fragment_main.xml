@@ -71,10 +71,9 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginHorizontal="@dimen/horizontal_margin__text_view_in_main_page"
         android:text="@string/main_page_text"
         android:textAlignment="center"
         android:textColor="@color/grey_c7c7c7"

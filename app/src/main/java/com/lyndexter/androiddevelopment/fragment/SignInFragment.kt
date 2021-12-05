@@ -1,11 +1,7 @@
 package com.lyndexter.androiddevelopment.fragment
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -16,16 +12,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.lyndexter.androiddevelopment.R
-import com.lyndexter.androiddevelopment.activity.WelcomeActivity
+import com.lyndexter.androiddevelopment.activity.MainActivity
 import com.lyndexter.androiddevelopment.viewmodel.SignInViewModel
-import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
  * Use the [SignInFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SignInFragment : Fragment() {
+class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private var toolbarSignIn: Toolbar? = null
     private var textViewToSignUp: TextView? = null
@@ -37,28 +32,6 @@ class SignInFragment : Fragment() {
 
     private var viewModel: SignInViewModel? = null
 
-    private lateinit var attachedContext: Context
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        attachedContext = context
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeToolbar(view)
@@ -66,15 +39,10 @@ class SignInFragment : Fragment() {
         initializeViewModel()
         signInButton?.setOnClickListener {
             clearInputFieldsError()
-            try {
-                viewModel?.signIn(emailInput?.text.toString(), passwordInput?.text.toString())
-            } catch (e: IllegalStateException) {
-                Timber.w(e.message!!)
-            }
+            viewModel?.signIn(emailInput?.text.toString(), passwordInput?.text.toString())
         }
         textViewToSignUp?.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.container, SignUpFragment.newInstance())?.commit()
+            (activity as MainActivity).goToFragment(SignUpFragment.newInstance())
         }
     }
 
@@ -90,29 +58,14 @@ class SignInFragment : Fragment() {
             if (user != null) {
                 clearInputFieldsText()
                 displaySuccess()
-                startActivity(Intent(attachedContext, WelcomeActivity::class.java))
+                (activity as MainActivity).goToWelcomeActivity()
             } else {
                 Toast.makeText(
-                    attachedContext, "Incorrect email or password",
-                    Toast.LENGTH_SHORT
+                    activity, "Incorrect email or password",
+                    Toast.LENGTH_LONG
                 ).show()
             }
         }
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @return A new instance of fragment SignInFragment.
-         */
-        @JvmStatic
-        fun newInstance() =
-            SignInFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
     }
 
     private fun clearInputFieldsError() {
@@ -122,20 +75,18 @@ class SignInFragment : Fragment() {
 
     private fun displaySuccess() {
         clearInputFieldsText()
-        val builder: AlertDialog.Builder = AlertDialog.Builder(attachedContext)
-        builder.setTitle("Success")
-        builder.setMessage("You have successfully signed in!")
-        builder.show()
-//        val authenticationResult = AuthenticationResultDialog()
-//        val manager = supportFragmentManager
-//        authenticationResult.show(manager, "successLogin")
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle("Success")
+                .setMessage("You have successfully signed in!")
+                .show()
+        }
     }
 
     private fun initializeToolbar(view: View) {
         toolbarSignIn = view.findViewById(R.id.sign_in_toolbar)
         toolbarSignIn?.setNavigationOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.container, MainFragment.newInstance())?.commit()
+            (activity as MainActivity).goToFragment(MainFragment.newInstance())
         }
     }
 
@@ -154,5 +105,16 @@ class SignInFragment : Fragment() {
     private fun clearInputFieldsText() {
         emailInput?.text?.clear()
         passwordInput?.text?.clear()
+    }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @return A new instance of fragment SignInFragment.
+         */
+        @JvmStatic
+        fun newInstance() = SignInFragment()
     }
 }

@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.lyndexter.androiddevelopment.InputValidator
+import com.lyndexter.androiddevelopment.validator.EmailValidator
+import com.lyndexter.androiddevelopment.validator.PasswordValidator
 import timber.log.Timber
 import java.lang.IllegalStateException
 
@@ -29,7 +30,7 @@ class SignInViewModel : ViewModel() {
                     }
                 }
         } else {
-            throw IllegalStateException("invalid input")
+            Timber.w("invalid input")
         }
     }
 
@@ -38,13 +39,13 @@ class SignInViewModel : ViewModel() {
         var isValidPassword = true
 
         try {
-            InputValidator.validateEmail(email)
+            EmailValidator.validate(email)
         } catch (e: IllegalStateException) {
             emailError.value = e.message
             isValidEmail = false
         }
         try {
-            InputValidator.validatePassword(password)
+            PasswordValidator.validate(password)
         } catch (e: IllegalStateException) {
             passwordError.value = e.message
             isValidPassword = false
