@@ -2,14 +2,14 @@ package com.lyndexter.androiddevelopment.presentation.user_list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lyndexter.androiddevelopment.domain.Repository
+import com.lyndexter.androiddevelopment.data.UserRepository
 import com.lyndexter.androiddevelopment.domain.User
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class UserViewModel(private val repository: Repository) : ViewModel() {
+class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
     val userList = MutableLiveData<List<User>>()
     val errorMessage = MutableLiveData<String>()
@@ -17,13 +17,13 @@ class UserViewModel(private val repository: Repository) : ViewModel() {
     private var disposable: Disposable? = null
 
     fun getUsers() {
-        disposable = repository.getUsers()
+        disposable = repository.getEntities()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map { response ->
                 val userList = mutableListOf<User>()
                 for (user in response.results) {
-                    userList.add(User(user.name.first, user.name.last))
+                    userList.add(User(user.name.first, user.name.last, user.picture.medium))
                 }
                 return@map userList
             }

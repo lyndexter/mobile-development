@@ -6,19 +6,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitBuilder {
+object RetrofitBuilderUser {
 
-    val api: PunkApi
+    val api: RandomUserApi
 
     init {
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL_PUNK)
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(getClient())
             .build()
 
-        api = retrofit.create(PunkApi::class.java)
+        api = retrofit.create(RandomUserApi::class.java)
     }
 
     private fun getClient(): OkHttpClient {

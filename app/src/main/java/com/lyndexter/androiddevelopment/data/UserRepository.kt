@@ -6,9 +6,9 @@ import io.reactivex.Single
 
 class UserRepository(
     private val api: RandomUserApi
-) : Repository {
+) : Repository<UserResponse> {
 
-    override fun getUsers(): Single<UserResponse> {
+    override fun getEntities(): Single<UserResponse> {
         return api.getUsers()
     }
 }

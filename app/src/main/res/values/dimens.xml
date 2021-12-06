@@ -14,4 +14,8 @@
     <dimen name="icon_bottom_margin_in_sign_up_page">10dp</dimen>
     <dimen name="title_page_font_size">24sp</dimen>
     <dimen name="horizontal_margin__text_view_in_main_page">80dp</dimen>
+    <dimen name="margin_or_beer_card">8dp</dimen>
+    <dimen name="padding_or_beer_card">8dp</dimen>
+    <dimen name="corner_or_beer_card">8dp</dimen>
+    <dimen name="image_width_in_beer_card">150dp</dimen>
 </resources>
