@@ -1,4 +1,4 @@
-package com.lyndexter.androiddevelopment.validator
+package com.lyndexter.androiddevelopment.presentation.validator
 
 open class InputValidator {
     companion object {

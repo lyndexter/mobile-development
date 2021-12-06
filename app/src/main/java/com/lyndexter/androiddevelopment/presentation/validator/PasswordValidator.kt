@@ -1,4 +1,4 @@
-package com.lyndexter.androiddevelopment.validator
+package com.lyndexter.androiddevelopment.presentation.validator
 
 private const val MIN_PASSWORD_LENGTH = 8
 private const val EMPTY_PASSWORD_FIELD_ERROR = "Password field can't be blank"

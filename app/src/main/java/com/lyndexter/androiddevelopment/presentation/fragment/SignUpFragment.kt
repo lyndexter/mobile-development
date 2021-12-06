@@ -1,4 +1,4 @@
-package com.lyndexter.androiddevelopment.fragment
+package com.lyndexter.androiddevelopment.presentation.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.lyndexter.androiddevelopment.R
-import com.lyndexter.androiddevelopment.activity.MainActivity
+import com.lyndexter.androiddevelopment.presentation.activity.MainActivity
 import com.lyndexter.androiddevelopment.viewmodel.SignUpViewModel
 
 /**

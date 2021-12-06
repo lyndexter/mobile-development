@@ -1,4 +1,4 @@
-package com.lyndexter.androiddevelopment.fragment
+package com.lyndexter.androiddevelopment.presentation.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.lyndexter.androiddevelopment.R
-import com.lyndexter.androiddevelopment.activity.MainActivity
+import com.lyndexter.androiddevelopment.presentation.activity.MainActivity
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 

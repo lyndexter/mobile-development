@@ -1,4 +1,4 @@
-package com.lyndexter.androiddevelopment.validator
+package com.lyndexter.androiddevelopment.presentation.validator
 
 private const val EMPTY_NAME_FIELD_ERROR = "Name field can't be blank"
 
