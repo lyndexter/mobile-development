@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "542948462249",
+    "project_id": "sensycry",
+    "storage_bucket": "sensycry.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542948462249:android:d9a4cc348a234439b123b8",
+        "android_client_info": {
+          "package_name": "com.lyndexter.androiddevelopment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542948462249-9hr0gdl73k34uh39jt7490hid3c6ccch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lyndexter.androiddevelopment",
+            "certificate_hash": "926b137d577ed9ff7f570fe374a2cf3ed15b4140"
+          }
+        },
+        {
+          "client_id": "542948462249-f636k2kstbs4rtacve36fqjn3cq8pv3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLHtG3nrgfE-8kGDiOL3lpcUO8QdrSjHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542948462249-f636k2kstbs4rtacve36fqjn3cq8pv3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
