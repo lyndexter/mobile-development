@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh_layout"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/entity_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/firstBackgroundColor"
-    tools:itemCount="10"
-    tools:listitem="@layout/beer_item" />
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:indeterminate="true"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/entity_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/firstBackgroundColor"
+        tools:itemCount="10"
+        tools:listitem="@layout/beer_item" />
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

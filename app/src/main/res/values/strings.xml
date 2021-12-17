@@ -17,4 +17,6 @@
     <string name="main_page_text">Hello its app analizum, to enter in app? please authorise first</string>
     <string name="welcome_page_text">Hello from app</string>
     <string name="image_beer_description">beer photo</string>
+    <string name="detail_item_back_button_text">Go Back</string>
+    <string name="item_details_page_title">Item Details</string>
 </resources>

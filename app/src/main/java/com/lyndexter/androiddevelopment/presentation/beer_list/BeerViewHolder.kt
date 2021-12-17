@@ -7,16 +7,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.lyndexter.androiddevelopment.R
 import com.lyndexter.androiddevelopment.domain.Beer
+import kotlin.reflect.KFunction1
 
 private val IMAGE_WITH = 400
 private val IMAGE_HEIGHT = 400
 
-class BeerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class BeerViewHolder(
+    private val clickListener: KFunction1<Beer, Unit>,
+    itemView: View
+) : RecyclerView.ViewHolder(itemView) {
     private val firstName: TextView = itemView.findViewById(R.id.first_name)
     private val lastName: TextView = itemView.findViewById(R.id.last_name)
     private val profilePhoto: ImageView = itemView.findViewById(R.id.profile_photo)
 
     fun bind(beer: Beer) {
+        itemView.setOnClickListener {
+            clickListener(beer)
+        }
         firstName.text = beer.name
         lastName.text = beer.description
 

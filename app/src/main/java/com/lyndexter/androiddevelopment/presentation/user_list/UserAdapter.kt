@@ -17,6 +17,7 @@ class UserAdapter : ListAdapter<User, UserViewHolder>(UserDifficultUtilCallback(
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+        Timber.d("onCreateViewHolder bind")
         holder.bind(currentList[position])
     }
 }
