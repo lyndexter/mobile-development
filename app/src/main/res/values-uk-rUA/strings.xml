@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidDevelopment</string>
+    <string name="email_hint_for_text_input">Емейл</string>
+    <string name="password_hint_for_text_input">Пароль</string>
+    <string name="sign_in_button_text">Ввійти</string>
+    <string name="text_redirection_to_register_page">Не зареєстровані?</string>
+    <string name="description_for_statistic_icon">іконка статистики</string>
+    <string name="title_of_back_button">стрілка назад</string>
+    <string name="confirm_password_hint_for_text_input">Підтвердження паролю</string>
+    <string name="name_hint_for_text_input">Ім\'я</string>
+    <string name="text_redirection_to_sign_in_page">Маєте акаунт?</string>
+    <string name="sign_up_button_text">Створити аккаунт</string>
+    <string name="Sign_in_page_title">Вхід</string>
+    <string name="title_of_sign_up_page">Створити аккаунт</string>
+    <string name="title_of_welcome_page">Ласкаво просимо</string>
+    <string name="title_main_page">Головна</string>
+    <string name="main_page_text">Привіт, це програма аналізіум. Щоб ввійти, зареєструйтись спочатку</string>
+    <string name="welcome_page_text">Привіт від апплікації</string>
+    <string name="image_beer_description">фото пива</string>
+    <string name="detail_item_back_button_text">"повернутись "</string>
+    <string name="item_details_page_title">деталі елемента</string>
+    <string name="profile_settings_title">мій профіль</string>
+</resources>

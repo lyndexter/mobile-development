@@ -1,19 +1,32 @@
 package com.lyndexter.androiddevelopment.presentation.fragment
 
+import android.content.Context
+import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.lyndexter.androiddevelopment.R
 import com.lyndexter.androiddevelopment.presentation.activity.SettingsActivity
+import com.lyndexter.androiddevelopment.presentation.activity.WelcomeActivity
 import com.lyndexter.androiddevelopment.presentation.beer_list.BeerViewModel
 import com.lyndexter.androiddevelopment.presentation.beer_list.BeerViewModelProviderFactory
+import timber.log.Timber
+import java.util.*
 
-class ProfileFragment() : Fragment(R.layout.fragment_item_details) {
+private const val PREFS_FILE_NAME = "user_data"
+private const val LANGUAGE_NAME = "language"
+private const val USER_NAME = "name"
+
+class ProfileFragment() : Fragment(R.layout.fragment_profile) {
 
     private val viewModel: BeerViewModel by activityViewModels { BeerViewModelProviderFactory() }
 
@@ -21,9 +34,11 @@ class ProfileFragment() : Fragment(R.layout.fragment_item_details) {
     private var spinner: Spinner? = null
     private var emailInput: TextInputEditText? = null
     private var nameInput: TextInputEditText? = null
+    private var sharedPreferences: SharedPreferences? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPreferences = activity?.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
 
         initializeToolbar(view)
         initializeViews(view)
@@ -37,8 +52,8 @@ class ProfileFragment() : Fragment(R.layout.fragment_item_details) {
     }
 
     private fun setViewsValue(view: View) {
-        emailInput?.setText("ewrewtferw@gmail.com")
-        nameInput?.setText("ewrewtfe")
+        emailInput?.setText(Firebase.auth.currentUser?.email)
+        nameInput?.setText(sharedPreferences?.getString(USER_NAME, "Default"))
         activity?.let {
             ArrayAdapter.createFromResource(
                 it,
@@ -56,6 +71,31 @@ class ProfileFragment() : Fragment(R.layout.fragment_item_details) {
     private fun initializeToolbar(view: View) {
         toolbarSignIn = view.findViewById(R.id.item_details_toolbar)
         toolbarSignIn?.setNavigationOnClickListener {
+            sharedPreferences?.edit {
+                putString(USER_NAME, nameInput?.text?.toString())
+                putString(LANGUAGE_NAME, spinner?.selectedItem?.toString())
+            }
+            emailInput?.text?.toString()?.let {
+                Firebase.auth.currentUser?.updateEmail(it)?.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Timber.d("updateEmail:success")
+                    } else {
+                        Timber.w("updateEmail:failure ${task.exception}}")
+                    }
+                }
+            }
+//            var change = "en"
+//            if (spinner?.selectedItem?.toString() == "Ukrainian") {
+//                change = "ua"
+//            } else if (spinner?.selectedItem?.toString() == "English") {
+//                change = "en"
+//            } else {
+//                change = "en"
+//            }
+//            WelcomeActivity.Locale.setDefault(Locale(change))
+//            val configuration = Configuration()
+//            configuration.setLocale(Locale(change))
+//            wrapper.applyOverrideConfiguration(configuration)
             (activity as SettingsActivity).goToWelcomeActivity()
         }
     }

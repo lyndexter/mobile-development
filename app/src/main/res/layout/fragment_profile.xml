@@ -78,7 +78,7 @@
     <LinearLayout
         android:id="@+id/linear_layout_title"
         android:layout_width="230dp"
-        android:layout_height="337dp"
+        android:layout_height="wrap_content"
         android:divider="@drawable/empty_divider"
         android:gravity="center"
         android:orientation="vertical"

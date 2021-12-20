@@ -36,6 +36,7 @@
                 app:titleTextColor="@color/grey_c7c7c7">
 
                 <Button
+                    android:id="@+id/settings_button"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="right" />

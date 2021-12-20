@@ -1,12 +1,11 @@
 package com.lyndexter.androiddevelopment.presentation.fragment
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,16 +18,13 @@ import com.lyndexter.androiddevelopment.presentation.beer_list.BeerViewModel
 import com.lyndexter.androiddevelopment.presentation.beer_list.BeerViewModelProviderFactory
 import timber.log.Timber
 
-private const val PREFS_VAL = "sdsa"
-private const val BEER_COUNT = "beer_count"
-
 class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
     private val viewModel: BeerViewModel by activityViewModels { BeerViewModelProviderFactory() }
 
     private val adapter = BeerAdapter(::onBeerItemClick)
     private var refreshLayout: SwipeRefreshLayout? = null
-    private var sharedPreferences: SharedPreferences? = null
     private var progressBar: ProgressBar? = null
+    private var settingsButton: Button? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,9 +33,9 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
         initializeToolbar(view)
         initialiseRecycleView(view)
         initialiseRefreshLayout(view)
-        subscribeOnViewModel()
+        initializeButton(view)
 
-        sharedPreferences = activity?.getSharedPreferences(PREFS_VAL, Context.MODE_PRIVATE)
+        subscribeOnViewModel()
 
         viewModel.getBeers()
     }
@@ -50,6 +46,13 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
 
     private fun initializeProgressBar(view: View) {
         progressBar = view.findViewById(R.id.progress_bar_welcome_fragment)
+    }
+
+    private fun initializeButton(view: View) {
+        settingsButton = view.findViewById(R.id.settings_button)
+        settingsButton?.setOnClickListener {
+            (activity as WelcomeActivity).goToSettingsActivity()
+        }
     }
 
     private fun initialiseRecycleView(view: View) {
@@ -69,10 +72,6 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
             adapter.submitList(it)
             progressBar?.visibility = View.GONE
             refreshLayout?.isRefreshing = false
-            sharedPreferences?.edit {
-                putInt(BEER_COUNT, it.size)
-            }
-            Timber.d("items found: %s", sharedPreferences?.getInt(BEER_COUNT, -1))
         })
 
         viewModel.errorMessage.observe(this, { message ->
