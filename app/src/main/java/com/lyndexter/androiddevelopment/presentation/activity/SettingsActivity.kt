@@ -5,17 +5,16 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.lyndexter.androiddevelopment.R
-import com.lyndexter.androiddevelopment.presentation.fragment.WelcomeFragment
+import com.lyndexter.androiddevelopment.presentation.fragment.ProfileFragment
 
-class WelcomeActivity : AppCompatActivity() {
-
+class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
+        setContentView(R.layout.activity_settings)
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.welcome_container, WelcomeFragment.newInstance())
+                .replace(R.id.settings_container, ProfileFragment.newInstance())
                 .commit()
         }
     }
@@ -23,11 +22,11 @@ class WelcomeActivity : AppCompatActivity() {
     fun goToFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.welcome_container, fragment)
+            .replace(R.id.settings_container, fragment)
             .commit()
     }
 
-    fun goToSettingsActivity() {
-        startActivity(Intent(this, SettingsActivity::class.java))
+    fun goToWelcomeActivity() {
+        startActivity(Intent(this, WelcomeActivity::class.java))
     }
 }

@@ -19,4 +19,12 @@
     <string name="image_beer_description">beer photo</string>
     <string name="detail_item_back_button_text">Go Back</string>
     <string name="item_details_page_title">Item Details</string>
+    <string name="profile_settings_title">My profile</string>
+    <string-array name="language_array">
+        <item>English</item>
+        <item>Ukrainian</item>
+        <item>Polish</item>
+    </string-array>
 </resources>
+
+

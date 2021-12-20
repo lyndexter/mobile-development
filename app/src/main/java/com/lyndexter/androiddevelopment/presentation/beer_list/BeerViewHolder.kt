@@ -12,17 +12,14 @@ import kotlin.reflect.KFunction1
 private val IMAGE_WITH = 400
 private val IMAGE_HEIGHT = 400
 
-class BeerViewHolder(
-    private val clickListener: KFunction1<Beer, Unit>,
-    itemView: View
-) : RecyclerView.ViewHolder(itemView) {
+class BeerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val firstName: TextView = itemView.findViewById(R.id.first_name)
     private val lastName: TextView = itemView.findViewById(R.id.last_name)
     private val profilePhoto: ImageView = itemView.findViewById(R.id.profile_photo)
 
-    fun bind(beer: Beer) {
+    fun bind(beer: Beer, position: Int, clickListener: KFunction1<Int, Unit>) {
         itemView.setOnClickListener {
-            clickListener(beer)
+            clickListener(position)
         }
         firstName.text = beer.name
         lastName.text = beer.description

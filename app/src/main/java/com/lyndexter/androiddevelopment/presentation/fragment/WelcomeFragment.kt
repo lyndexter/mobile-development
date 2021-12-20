@@ -4,10 +4,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -22,16 +23,17 @@ private const val PREFS_VAL = "sdsa"
 private const val BEER_COUNT = "beer_count"
 
 class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
-
-    private val viewModel by viewModels<BeerViewModel> { BeerViewModelProviderFactory() }
+    private val viewModel: BeerViewModel by activityViewModels { BeerViewModelProviderFactory() }
 
     private val adapter = BeerAdapter(::onBeerItemClick)
     private var refreshLayout: SwipeRefreshLayout? = null
     private var sharedPreferences: SharedPreferences? = null
+    private var progressBar: ProgressBar? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initializeProgressBar(view)
         initializeToolbar(view)
         initialiseRecycleView(view)
         initialiseRefreshLayout(view)
@@ -44,6 +46,10 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
 
     private fun initializeToolbar(view: View) {
         (activity as AppCompatActivity).setSupportActionBar(view.findViewById(R.id.main_toolbar))
+    }
+
+    private fun initializeProgressBar(view: View) {
+        progressBar = view.findViewById(R.id.progress_bar_welcome_fragment)
     }
 
     private fun initialiseRecycleView(view: View) {
@@ -61,6 +67,7 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
     private fun subscribeOnViewModel() {
         viewModel.beerList.observe(this, {
             adapter.submitList(it)
+            progressBar?.visibility = View.GONE
             refreshLayout?.isRefreshing = false
             sharedPreferences?.edit {
                 putInt(BEER_COUNT, it.size)
@@ -73,10 +80,8 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
         })
     }
 
-    private fun onBeerItemClick(name: String, description: String, pictureUrl: String) {
-        var itemDetailsFragment = ItemDetailsFragment.newInstance()
-        Bundle args =
-
+    private fun onBeerItemClick(position: Int) {
+        viewModel.beerItemPosition.value = position
         (activity as WelcomeActivity).goToFragment(ItemDetailsFragment.newInstance())
     }
 

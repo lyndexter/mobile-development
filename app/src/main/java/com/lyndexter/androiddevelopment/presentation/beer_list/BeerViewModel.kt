@@ -14,6 +14,7 @@ class BeerViewModel(private val repository: Repository<Response>) : ViewModel() 
 
     val beerList = MutableLiveData<List<Beer>>()
     val errorMessage = MutableLiveData<String>()
+    val beerItemPosition = MutableLiveData<Int>()
 
     private var disposable: Disposable? = null
 
@@ -39,6 +40,11 @@ class BeerViewModel(private val repository: Repository<Response>) : ViewModel() 
             .subscribe({ results ->
                 beerList.value = results
             }, { error -> errorMessage.value = error.message })
+    }
+
+    fun getBeer(): Beer? {
+        Timber.i("-------------------- Beer item info - %s", beerItemPosition.value)
+        return beerItemPosition.value?.let { beerList.value?.get(it) }
     }
 
     override fun onCleared() {
