@@ -2,7 +2,6 @@ package com.lyndexter.androiddevelopment.presentation.fragment
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -16,11 +15,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.lyndexter.androiddevelopment.R
 import com.lyndexter.androiddevelopment.presentation.activity.SettingsActivity
-import com.lyndexter.androiddevelopment.presentation.activity.WelcomeActivity
 import com.lyndexter.androiddevelopment.presentation.beer_list.BeerViewModel
 import com.lyndexter.androiddevelopment.presentation.beer_list.BeerViewModelProviderFactory
 import timber.log.Timber
-import java.util.*
 
 private const val PREFS_FILE_NAME = "user_data"
 private const val LANGUAGE_NAME = "language"
@@ -66,6 +63,10 @@ class ProfileFragment() : Fragment(R.layout.fragment_profile) {
                 spinner?.adapter = adapter
             }
         }
+        spinner?.setSelection(
+            resources.getStringArray(R.array.language_array)
+                .indexOf(sharedPreferences?.getString(LANGUAGE_NAME, "English"))
+        )
     }
 
     private fun initializeToolbar(view: View) {
@@ -84,18 +85,6 @@ class ProfileFragment() : Fragment(R.layout.fragment_profile) {
                     }
                 }
             }
-//            var change = "en"
-//            if (spinner?.selectedItem?.toString() == "Ukrainian") {
-//                change = "ua"
-//            } else if (spinner?.selectedItem?.toString() == "English") {
-//                change = "en"
-//            } else {
-//                change = "en"
-//            }
-//            WelcomeActivity.Locale.setDefault(Locale(change))
-//            val configuration = Configuration()
-//            configuration.setLocale(Locale(change))
-//            wrapper.applyOverrideConfiguration(configuration)
             (activity as SettingsActivity).goToWelcomeActivity()
         }
     }

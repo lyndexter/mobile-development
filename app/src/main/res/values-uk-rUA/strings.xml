@@ -21,4 +21,5 @@
     <string name="detail_item_back_button_text">"повернутись "</string>
     <string name="item_details_page_title">деталі елемента</string>
     <string name="profile_settings_title">мій профіль</string>
+    <string name="Welcome_fragment_title">Головна сторінка</string>
 </resources>

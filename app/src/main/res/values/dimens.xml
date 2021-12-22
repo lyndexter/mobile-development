@@ -19,4 +19,6 @@
     <dimen name="corner_or_beer_card">8dp</dimen>
     <dimen name="image_width_in_beer_card">150dp</dimen>
     <dimen name="profile_text_view_height">70dp</dimen>
+    <dimen name="welcome_fragment_settings_button_margin_end">10dp</dimen>
+    <dimen name="welcome_fragment_button_icon_size">40dp</dimen>
 </resources>

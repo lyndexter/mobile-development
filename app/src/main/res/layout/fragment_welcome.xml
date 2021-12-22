@@ -7,13 +7,12 @@
     android:layout_height="match_parent">
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout2"
+            android:id="@+id/app_bar_layout_welcome_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,15 +30,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
 
-                app:title="Welcome Activity"
+                app:title="@string/Welcome_fragment_title"
                 app:titleTextAppearance="@style/ToolbarTitle"
                 app:titleTextColor="@color/grey_c7c7c7">
 
                 <Button
                     android:id="@+id/settings_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="right" />
+                    android:layout_width="@dimen/welcome_fragment_button_icon_size"
+                    android:layout_height="@dimen/welcome_fragment_button_icon_size"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/welcome_fragment_settings_button_margin_end"
+
+                    android:background="@drawable/settings_icon" />
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>

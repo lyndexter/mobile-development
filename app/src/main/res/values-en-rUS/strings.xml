@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AndroidDevelopment</string>
     <string name="email_hint_for_text_input">Email</string>
@@ -21,11 +22,4 @@
     <string name="item_details_page_title">Item Details</string>
     <string name="profile_settings_title">My profile</string>
     <string name="Welcome_fragment_title">Welcome Activity</string>
-    <string-array name="language_array">
-        <item>English</item>
-        <item>Ukrainian</item>
-        <item>Polish</item>
-    </string-array>
 </resources>
-
-

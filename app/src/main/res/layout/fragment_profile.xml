@@ -7,7 +7,7 @@
     android:background="@drawable/layout_background_for_authentication">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout2"
+        android:id="@+id/app_bar_layout_welcome_fragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/linear_layout_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout2">
+        app:layout_constraintTop_toBottomOf="@id/app_bar_layout_welcome_fragment">
 
         <TextView
             android:id="@+id/profile_name_text"
@@ -86,7 +86,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/linear_layout_input"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout2"
+        app:layout_constraintTop_toBottomOf="@id/app_bar_layout_welcome_fragment"
         app:layout_constraintVertical_bias="0.501">
 
 
